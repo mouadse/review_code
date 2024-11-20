@@ -15,16 +15,16 @@
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	i;
-	char	*d;
-	char	*s;
-	char	*lastd;
-	char	*lasts;
+	char	*dst_cpy;
+	char	*src_cpy;
+	char	*dst_end;
+	char	*src_end;
 
 	i = 0;
-	d = (char *)dst;
-	s = (char *)src;
-	lastd = d + len - 1;
-	lasts = s + len - 1;
+	dst_cpy = (char *)dst;
+	src_cpy = (char *)src;
+	dst_end = dst_cpy + len - 1;
+	src_end = src_cpy + len - 1;
 	if (!dst || !src)
 	{
 		return (NULL);
@@ -33,11 +33,11 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	{
 		return (dst);
 	}
-	if (d < s)
+	if (dst_cpy < src_cpy)
 	{
 		while (i < len)
 		{
-			d[i] = s[i];
+			dst_cpy[i] = src_cpy[i];
 			i++;
 		}
 	}
@@ -46,9 +46,9 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		i = 0;
 		while (i < len)
 		{
-			*lastd = *lasts;
-			lastd--;
-			lasts--;
+			*dst_end = *src_end;
+			dst_end--;
+			src_end--;
 			i++;
 		}
 	}

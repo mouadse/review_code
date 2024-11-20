@@ -15,26 +15,26 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	new_len;
-	char	*sub_str;
+	char	*result;
 
 	if (!s)
 		return (NULL);
 	if (ft_strlen(s) < start)
 	{
-		sub_str = malloc(sizeof(char));
-		if (!sub_str)
+		result = malloc(sizeof(char));
+		if (!result)
 			return (NULL);
-		sub_str[0] = '\0';
+		result[0] = '\0';
 	}
 	else
 	{
 		new_len = ft_strlen(s + start);
 		if (new_len < len)
 			len = new_len;
-		sub_str = malloc(sizeof(char) * (len + 1));
-		if (!sub_str)
+		result = malloc(sizeof(char) * (len + 1));
+		if (!result)
 			return (NULL);
-		ft_strlcpy(sub_str, s + start, len + 1);
+		ft_strlcpy(result, s + start, len + 1);
 	}
-	return (sub_str);
+	return (result);
 }
